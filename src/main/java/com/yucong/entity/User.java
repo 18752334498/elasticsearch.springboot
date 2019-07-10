@@ -1,8 +1,7 @@
 package com.yucong.entity;
 
 import java.io.Serializable;
-
-import org.springframework.data.elasticsearch.annotations.Document;
+import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -11,7 +10,6 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Document(indexName = "userindex", type = "user")
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 7481481492891891599L;
@@ -28,6 +26,6 @@ public class User implements Serializable {
 	private String description;
 
 	/** 创建时间 */
-	private String createtm;
+	private Date creatDate;
 
 }
