@@ -46,7 +46,7 @@ public class ESClientSpringFactory {
         setConnectTimeOutConfig();
         setMutiConnectConfig();
         restClient = builder.build();
-        restHighLevelClient = new RestHighLevelClient(builder);
+        restHighLevelClient = new RestHighLevelClient(builder);// 高级客户端将在内部创建低级客户端，用来执行基于提供的构建器的请求，并管理其生命周期
         System.out.println("init factory");
     }
 
