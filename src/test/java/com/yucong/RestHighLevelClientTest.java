@@ -8,7 +8,6 @@ import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.action.update.UpdateResponse;
 import org.elasticsearch.client.RequestOptions;
-import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.index.get.GetResult;
 import org.junit.Test;
@@ -22,7 +21,7 @@ import com.alibaba.fastjson.serializer.SerializerFeature;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ElasticSerachApp.class)
-public class ElasticSerachTest {
+public class RestHighLevelClientTest {
 
     /**
      * https://www.cnblogs.com/ginb/p/8716485.html
@@ -74,6 +73,10 @@ public class ElasticSerachTest {
         } else {
             // 处理不返回文档源的场景（默认就是这种情况）
         }
+    }
+
+    @Test
+    public void search() {
     }
 
 
