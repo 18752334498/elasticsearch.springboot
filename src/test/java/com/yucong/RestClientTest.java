@@ -77,19 +77,27 @@ public class RestClientTest {
             restClient.performRequest(request);
         }
     }
-    
+
     @Test
-    public void aa() throws Exception {
+    public void search() throws Exception {
 
         Map<String, Object> map = new HashMap<>();
         map.put("query", ImmutableMap.of//
                     ("bool", ImmutableMap.of//
-                            ("must",ImmutableList.of(//
-                                    ImmutableMap.of("term", ImmutableMap.of("province.raw", "江苏省")),//
+                            ("must", ImmutableList.of(//
+                                    ImmutableMap.of("term", ImmutableMap.of("province.raw", "江苏省")), //
                                     ImmutableMap.of("term", ImmutableMap.of("sex", "男"))))));
+        map.put("aggs", ImmutableMap.of//
+                    ("age_stats", ImmutableMap.of//
+                            ("stats", ImmutableMap.of//
+                                    ("field", "age"))));
         System.out.println(JSON.toJSONString(map, SerializerFeature.PrettyFormat));
 
-        HttpEntity entity = new NStringEntity(JSON.toJSONString(map), ContentType.APPLICATION_JSON);
+
+        String aa =
+                "{\"query\":{\"bool\":{\"must\":[{\"term\":{\"province\":\"江苏省\"}},{\"term\":{\"sex\":{\"value\":\"男\"}}}]}},\"aggs\":{\"age_stats\":{\"stats\":{\"field\":\"age\"}}}}";
+
+        HttpEntity entity = new NStringEntity(aa, ContentType.APPLICATION_JSON);
 
         Request request = new Request("POST", "/user/doc/_search");
         request.setEntity(entity);
@@ -99,16 +107,14 @@ public class RestClientTest {
 
         JSONObject object = JSONObject.parseObject(string);
         System.out.println(JSON.toJSONString(object.getJSONObject("hits"), SerializerFeature.PrettyFormat));
+        System.out.println(JSON.toJSONString(object.getJSONObject("aggregations"), SerializerFeature.PrettyFormat));
     }
-    
+
     @Test
-    public void getbyId(long id) throws Exception {
+    public void getbyId() throws Exception {
         Request request = new Request("POST", "/user/doc/_search");
 
-        ImmutableMap<String, Object> of = 
-            ImmutableMap.of("query",
-                ImmutableMap.of("term",
-                        ImmutableMap.of("id", id)));
+        ImmutableMap<String, Object> of = ImmutableMap.of("query", ImmutableMap.of("term", ImmutableMap.of("id", 1)));
         HttpEntity entity = new NStringEntity(JSON.toJSONString(of), ContentType.APPLICATION_JSON);
         request.setEntity(entity);
         Response response = restClient.performRequest(request);
@@ -117,7 +123,7 @@ public class RestClientTest {
 
         JSONObject object = JSONObject.parseObject(string);
         System.out.println(JSON.toJSONString(object.getJSONObject("hits"), SerializerFeature.PrettyFormat));
-        
+
     }
 
     
