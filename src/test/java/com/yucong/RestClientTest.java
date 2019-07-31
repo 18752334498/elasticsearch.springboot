@@ -60,14 +60,14 @@ public class RestClientTest {
 
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
         List<User> list = new ArrayList<>();
-        list.add(new User(1l, "赵敏", "女", 25, "排球，足球，游泳", "江苏省", "淮安市", sdf.parse("2017-01-01"), null));
-        list.add(new User(2l, "赵忠祥", "男", 58, "足球，书法", "江苏省", "淮安市", sdf.parse("2018-02-31"), null));
-        list.add(new User(3l, "孙满堂", "男", 78, "跑步，篮球，羽毛球", "江苏省", "南京市", sdf.parse("2019-01-01"), null));
-        list.add(new User(4l, "孙膑", "男", 34, "书法，篮球", "江苏省", "南京市", sdf.parse("2019-01-01"), null));
-        list.add(new User(5l, "周武王", "男", 58, "跑步", "山东省", "济南市", sdf.parse("2019-02-01"), null));
-        list.add(new User(6l, "吴文周", "男", 50, "排球，游泳，足球", "山东省", "济南市", sdf.parse("2019-02-01"), null));
-        list.add(new User(7l, "郑爽", "女", 28, "乒乓球，高尔夫，台球", "山东省", "青岛市", sdf.parse("2019-11-21"), null));
-        list.add(new User(8l, "郑成功", "男", 28, "台球，足球", "山东省", "青岛市", sdf.parse("2019-11-25"), null));
+        list.add(new User(1l, "赵敏", "女", 25, "排球，足球，游泳", "江苏省", "淮安市", sdf.parse("2017-01-01"), "君不见黄河之水天上来"));
+        list.add(new User(2l, "赵忠祥", "男", 58, "足球，书法", "江苏省", "淮安市", sdf.parse("2018-02-31"), "奔流到海不复回"));
+        list.add(new User(3l, "孙满堂", "男", 78, "跑步，篮球，羽毛球", "江苏省", "南京市", sdf.parse("2019-01-01"), "君不见高堂明镜悲白发"));
+        list.add(new User(4l, "孙膑", "男", 34, "书法，篮球", "江苏省", "南京市", sdf.parse("2019-01-01"), "朝如青丝暮成雪"));
+        list.add(new User(5l, "周武王", "男", 58, "跑步", "山东省", "济南市", sdf.parse("2019-02-01"), "我想我是海，冬天的大海，心情随风摇摆，潮起的期待，潮落的无奈，不是谁都明白"));
+        list.add(new User(6l, "吴文周", "男", 50, "排球，游泳，足球", "山东省", "济南市", sdf.parse("2019-02-01"), "千山鸟飞绝，万径人踪灭。孤舟蓑笠翁，独钓寒江雪"));
+        list.add(new User(7l, "郑爽", "女", 28, "乒乓球，高尔夫，台球", "山东省", "青岛市", sdf.parse("2019-11-21"), "朝辞白帝彩云间，千里江陵一日还"));
+        list.add(new User(8l, "郑成功", "男", 28, "台球，足球", "山东省", "青岛市", sdf.parse("2019-11-25"), "百川东到海，何时复西归？少壮不努力，老大徒伤悲"));
 
         for (User user : list) {
             String jsonStr = JSONObject.toJSONStringWithDateFormat(user, "yyyy-MM-dd HH:mm:ss");
