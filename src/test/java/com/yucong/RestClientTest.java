@@ -92,13 +92,8 @@ public class RestClientTest {
                             ("stats", ImmutableMap.of//
                                     ("field", "age"))));
         System.out.println(JSON.toJSONString(map, SerializerFeature.PrettyFormat));
-
-
-        String aa =
-                "{\"query\":{\"bool\":{\"must\":[{\"term\":{\"province\":\"江苏省\"}},{\"term\":{\"sex\":{\"value\":\"男\"}}}]}},\"aggs\":{\"age_stats\":{\"stats\":{\"field\":\"age\"}}}}";
-
-        HttpEntity entity = new NStringEntity(aa, ContentType.APPLICATION_JSON);
-
+        
+        HttpEntity entity = new NStringEntity(JSON.toJSONString(map), ContentType.APPLICATION_JSON);
         Request request = new Request("POST", "/user/doc/_search");
         request.setEntity(entity);
         Response response = restClient.performRequest(request);
