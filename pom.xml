@@ -63,7 +63,7 @@
 		<dependency>
 			<groupId>org.elasticsearch</groupId>
 			<artifactId>elasticsearch</artifactId>
-			<version>6.8.0</version><!--$NO-MVN-MAN-VER$ -->
+			<version>6.8.13</version><!--$NO-MVN-MAN-VER$ -->
 		</dependency>
 		<dependency>
 			<groupId>org.apache.httpcomponents</groupId>
